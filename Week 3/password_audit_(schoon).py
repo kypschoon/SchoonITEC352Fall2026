@@ -1,13 +1,8 @@
-"""Password Strength Audit starter template.
+# Kyp Schoon_08SEP2026
 
-Complete each TODO. Do not change the required function names or parameters.
-"""
-
-# TODO: Create a loop so the user can try again after invalid input.
-# TODO: Use try/except ValueError around the int() conversion.
-# TODO: Return only a number greater than zero.
+# This function prompts the user for the number of passwords they will enter and ensures that the input is a valid positive integer.
 def get_password_count():
-    """Prompt until the user enters a positive whole number; return that number."""
+    # This loop continues to prompt the user until a valid number of passwords is entered.
     while True:
         try:
             password_count = int(input("How many passwords will you enter? "))
@@ -18,21 +13,15 @@ def get_password_count():
         except ValueError:
             print("Please enter a valid number.")
 
-
- # TODO: Create local variables that track uppercase, lowercase, digit,
-    # and special-character requirements.
-    # TODO: Use a loop to inspect every character in password.
-    # Hint: character.isupper(), character.islower(), and character.isdigit()
-    # may be useful.
-    # TODO: Count how many character-type requirements were met.
-    # TODO: Use if/elif/else to return the correct rating.
+# This function evaluates the strength of a given password based on specific criteria, including length and character variety.
 def evaluate_password(password):
-    """Return Strong, Moderate, or Weak after examining one password."""
+    #This section initializes boolean flags to track the presence of different character types in the password.
     has_uppercase = False
     has_lowercase = False
     has_digit = False
     has_special = False
 
+    #This loop iterates through each character in the password, updating the boolean flags based on the character's type.
     for char in password:
         if char.isupper():
             has_uppercase = True
@@ -43,6 +32,7 @@ def evaluate_password(password):
         else:
             has_special = True
 
+    #This section calculates the total number of character types present in the password.
     type_total = sum([has_uppercase, has_lowercase, has_digit, has_special])
     if password and len(password) >= 12 and type_total == 4:
         return "Strong"
@@ -52,29 +42,27 @@ def evaluate_password(password):
         return "Weak"
 
 
-
-# TODO: Print a labeled final summary using the three parameters.
+# This function displays a summary of the counts of strong, moderate, and weak passwords.
 def display_summary(strong_count, moderate_count, weak_count):
-    """Display the totals for each password-rating category."""
     print("\nPassword Strength Summary:")
     print(f"Strong: {strong_count}")
     print(f"Moderate: {moderate_count}")
     print(f"Weak: {weak_count}")
     
 
-
+# This is the main function that orchestrates the password auditing process. It collects user input, evaluates each password, 
+# and displays a summary of the results.
 def main():
-    """Coordinate the password audit."""
-    # TODO: Create local counters for Strong, Moderate, and Weak passwords.
+    #This section initializes counters for the number of strong, moderate, and weak passwords entered by the user.
     strong_count = 0
     moderate_count = 0
     weak_count = 0
 
-    # TODO: Call get_password_count().
+    # This line calls the get_password_count() function to determine how many passwords the user will enter.
     password_count = get_password_count()
 
-    # TODO: Loop once for each password, call evaluate_password(), and update
-    # the appropriate counter using if/elif/else.
+    # This loop iterates for the number of passwords specified by the user, prompting for each password and evaluating its strength.
+    #  The appropriate counter is incremented based on the evaluation result.
     for _ in range(password_count):
         password = input("Enter a password: ")
         rating = evaluate_password(password)
@@ -85,9 +73,10 @@ def main():
         else:
             weak_count += 1
 
-    # TODO: Call display_summary() after the loop.
+    # This line calls the display_summary() function to print the final counts of strong, moderate, and 
+    # weak passwords after all passwords have been evaluated.
     display_summary(strong_count, moderate_count, weak_count)
 
-
+# This conditional statement checks if the script is being run directly and calls the main() function to start the program.
 if __name__ == "__main__":
     main()
