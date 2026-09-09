@@ -77,6 +77,9 @@ def main():
     # weak passwords after all passwords have been evaluated.
     display_summary(strong_count, moderate_count, weak_count)
 
+    # This line prints a message indicating that the password audit process has been completed.
+    print("Password audit completed.")
+    
 # This conditional statement checks if the script is being run directly and calls the main() function to start the program.
 if __name__ == "__main__":
     main()
