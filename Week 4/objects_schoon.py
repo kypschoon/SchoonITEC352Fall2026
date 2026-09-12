@@ -1,37 +1,32 @@
-"""
-Example of object oriented class called Garden for ITEC-352-001
-main routine included with OOP code
-Sharon Gumina
-9/10/2026
-"""""
+#Kyp Schoon
+#14SEP2026
 
 #Using dataclasses instead of hard coding __init__
 from dataclasses import dataclass
 
-#Defining the Garden class with 4 attributes and 2 methods
+#Defining the Snake class with 4 attributes and 2 methods
 @dataclass
-class Garden:
+class Snake:
     name: str
     location: str
-    plant_count: int
-    has_irrigation: bool
+    length: int
+    is_venomous: bool
 
-    #Method that accepts and prints out the number of plants to plant
-    def grow_plants(self, number):
-        """Adds newly planted plants to the garden."""
-        if number > 0:
-            self.plant_count += number
-            print(f"{number} plants were added to {self.name}.")
-        else:
-            print("Enter a positive number of plants.")
+    #Method that grows the snake by a certain number of feet 
+    def grow_snake(self):
+        while True:
+            try:
+                feet = int(input(f"Enter the number of feet to grow {self.name}: "))
+                if feet <= 0:
+                    raise ValueError
+                self.length += feet
+                print(f"{self.name} has grown by {feet} feet.")
+                break
+            except ValueError:
+                print("The number of feet must be a positive integer. Please try again.")
+        
 
-    #Method that returns a description of the garden
+    #Method that returns a description of the snake
     def get_summary(self):
-        """Returns a description of the garden."""
-        irrigation_status = "has irrigation" if self.has_irrigation else "does not have irrigation"
-
-        return (
-            f"{self.name} is located at {self.location}. "
-            f"It has {self.plant_count} plants and {irrigation_status}."
-        )
+        return (f"{self.name} is a {self.length}-foot {self.location} snake and is {'venomous' if self.is_venomous else 'not venomous'}.")
 
