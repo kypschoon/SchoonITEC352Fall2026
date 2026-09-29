@@ -21,7 +21,7 @@ def main():
     print()
     snakes = [anaconda, cobra, cottonmouth]
     for snake in snakes:
-        print(snake.get_summary(), end="\n\n")
+        print(snake, end="\n\n")
 
 if __name__ == "__main__":
     main()
