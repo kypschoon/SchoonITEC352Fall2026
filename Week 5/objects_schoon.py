@@ -30,3 +30,29 @@ class Snake:
     def get_summary(self):
         return (f"{self.name} is a {self.length}-foot {self.location} snake and is {'venomous' if self.is_venomous else 'not venomous'}.")
 
+    def __str__(self):
+        return self.get_summary()
+
+# Defines subclass Viperidae and adds family trait
+@dataclass
+class Viperidae(Snake):
+    family_trait: str = "Hinged Fangs, Hemotoxic Venom"
+
+    def get_summary(self):
+        return (f"{self.name} is a {self.length}-foot {self.location} Snake in the Viperidae family and is venomous. Family trait: {self.family_trait}.")
+
+
+@dataclass
+class Boidae(Snake):
+    family_trait: str = "Constrictor, Live Birth"
+
+    def get_summary(self):
+        return (f"{self.name} is a {self.length}-foot {self.location} Snake in the Boidae Family and is not venomous. Family trait: {self.family_trait}.")
+
+
+@dataclass
+class Elapidae(Snake):
+    family_trait: str = "Fixed Fangs, Neurotoxic Venom"
+
+    def get_summary(self):
+        return (f"{self.name} is a {self.length}-foot {self.location} Snake in the Elapidae family and is venomous. Family trait: {self.family_trait}.")

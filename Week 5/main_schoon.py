@@ -4,22 +4,24 @@
 #Main function which instantiates a snake using the Snake class
 #Passes in parameters to use for the attributes
 #Calls both methods
-from objects_schoon import Snake
+from objects_schoon import Snake, Boidae, Elapidae, Viperidae
 
 def main():
     # Instantiate a Snake object
-    python = Snake("Python", "Jungle", 10, False)
-    cobra = Snake("Cobra", "Desert", 6, True)
-    cottonmouth = Snake("Cottonmouth", "Swamp", 4, True)
+    anaconda = Boidae("Anaconda", "Jungle", 15, False)
+    cobra = Elapidae("Cobra", "Desert", 6, True)
+    cottonmouth = Viperidae("Cottonmouth", "Swamp", 4, True)
+
 
     print("My snake collection:")
     # Call the methods
-    python.grow_snake()
+    anaconda.grow_snake()
     cobra.grow_snake()
     cottonmouth.grow_snake()
-    print(python.get_summary())
-    print(cobra.get_summary())
-    print(cottonmouth.get_summary())
+    print()
+    snakes = [anaconda, cobra, cottonmouth]
+    for snake in snakes:
+        print(snake.get_summary(), end="\n\n")
 
 if __name__ == "__main__":
     main()
