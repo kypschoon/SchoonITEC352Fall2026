@@ -1,10 +1,10 @@
 #Kyp Schoon
-#14SEP2026
+#01OCT2026
 
 #Using dataclasses instead of hard coding __init__
 from dataclasses import dataclass
 
-#Defining the Snake class with 4 attributes and 2 methods
+#Defining the Snake class with 4 attributes and 3 methods
 @dataclass
 class Snake:
     name: str
@@ -30,10 +30,11 @@ class Snake:
     def get_summary(self):
         return (f"{self.name} is a {self.length}-foot {self.location} snake and is {'venomous' if self.is_venomous else 'not venomous'}.")
 
+# Method that returns a string representation of the snake object
     def __str__(self):
         return self.get_summary()
 
-# Defines subclass Viperidae and adds family trait
+# Defines subclass Viperidae as well as overrides the get_summary method to include family trait
 @dataclass
 class Viperidae(Snake):
     family_trait: str = "Hinged Fangs, Hemotoxic Venom"
@@ -41,7 +42,7 @@ class Viperidae(Snake):
     def get_summary(self):
         return (f"{self.name} is a {self.length}-foot {self.location} Snake in the Viperidae family and is venomous. Family trait: {self.family_trait}.")
 
-
+# Defines subclass Boidae as well as overrides the get_summary method to include family trait
 @dataclass
 class Boidae(Snake):
     family_trait: str = "Constrictor, Live Birth"
@@ -49,7 +50,7 @@ class Boidae(Snake):
     def get_summary(self):
         return (f"{self.name} is a {self.length}-foot {self.location} Snake in the Boidae Family and is not venomous. Family trait: {self.family_trait}.")
 
-
+# Defines subclass Elapidae as well as overrides the get_summary method to include family trait
 @dataclass
 class Elapidae(Snake):
     family_trait: str = "Fixed Fangs, Neurotoxic Venom"
