@@ -12,16 +12,15 @@ def main():
     cobra = Elapidae("Cobra", "Desert", 6, True)
     cottonmouth = Viperidae("Cottonmouth", "Swamp", 4, True)
 
+    snakes = [anaconda, cobra, cottonmouth]
 
     print("My snake collection:")
     # Call the methods
-    anaconda.grow_snake()
-    cobra.grow_snake()
-    cottonmouth.grow_snake()
+    for snake in snakes:
+        snake.grow_snake()
     print()
 
-    # Print the summary of each snake call the def __str__ method and shows polymorphism
-    snakes = [anaconda, cobra, cottonmouth]
+    # Prints the summary of each snake using the snake object and calls the def __str__ method and shows polymorphism
     for snake in snakes:
         print(snake, end="\n\n")
 
