@@ -1,17 +1,20 @@
 #!/usr/bin/env/python3
 
 import db
-from objects import Movie
+from objects import Movie, Category
 
 def display_title():
     print("The Movie List program")
     print()    
     display_menu()
 
+#menu added option for viewing movies by length
 def display_menu():
     print("COMMAND MENU")
     print("cat  - View movies by category")
     print("year - View movies by year")
+    print("sort - View movies alphabetically")
+    print("len  - View movies by length")
     print("add  - Add a movie")
     print("del  - Delete a movie")
     print("exit - Exit program")
@@ -44,7 +47,16 @@ def display_movies_by_category():
         print()
         movies = db.get_movies_by_category(category_id)
         display_movies(movies, category.name.upper())
-    
+
+def display_movies_alphabetically():
+    movies = db.list_movies_alphabetically()
+    display_movies(movies, "alphabetically")
+
+#This function displays movies sorted by their length.
+def display_movies_by_length():
+    movies = db.list_movies_by_length()
+    display_movies(movies, "by length")
+
 def display_movies_by_year():
     year = int(input("Year: "))
     print()
@@ -70,7 +82,8 @@ def delete_movie():
     movie_id = int(input("Movie ID: "))
     db.delete_movie(movie_id)
     print("Movie ID " + str(movie_id) + " was deleted from database.\n")
-        
+
+# main was updated to add the elif command == "len":
 def main():
     db.connect()
     display_title()
@@ -81,6 +94,10 @@ def main():
             display_movies_by_category()
         elif command == "year":
             display_movies_by_year()
+        elif command == "sort":
+            display_movies_alphabetically()
+        elif command == "len":
+            display_movies_by_length()
         elif command == "add":
             add_movie()
         elif command == "del":
