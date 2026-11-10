@@ -1,0 +1,45 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Orders</h1>
+
+<!-- Orders table -->
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.customer }}</td>
+                <td>{{ order.product }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>${{ order.price }}</td>
+                <td>{{ order.date }}</td>
+                <td>
+                    {% if order.status %}
+                        Completed
+                    {% else %}
+                        Pending
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="7">No orders found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

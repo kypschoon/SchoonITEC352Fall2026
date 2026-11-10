@@ -1,0 +1,80 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Shopping Cart</h1>
+
+<!-- Check if there are items in the cart -->
+{% if cart_items %}
+
+<table class="table table-bordered align-middle">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Item Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <!-- Loop through each item in the cart -->
+        {% for item in cart_items %}
+        <tr>
+            <td>
+                <!-- Product name and category -->
+                <strong>{{ item.product.name }}</strong><br>
+                <small>{{ item.product.category.name }}</small>
+            </td>
+
+            <!-- Price of one item -->
+            <td>${{ item.product.price }}</td>
+
+            <!-- Quantity in cart -->
+            <td>{{ item.quantity }}</td>
+
+            <!-- Total for this item (price * quantity) -->
+            <td>${{ item.item_total }}</td>
+
+            <td>
+                <!-- Add one item (+) -->
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="product" value="{{ item.product.id }}">
+                    <button type="submit" class="btn btn-sm btn-success">+</button>
+                </form>
+
+                <!-- Remove one item (-) -->
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="product" value="{{ item.product.id }}">
+                    <input type="hidden" name="remove" value="1">
+                    <button type="submit" class="btn btn-sm btn-danger">-</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<!-- Cart summary -->
+<div class="alert alert-info">
+    <strong>Total items:</strong> {{ cart_count }}<br>
+
+    <!-- ✅ FIX: use "total" (matches views.py) -->
+    <strong>Cart total:</strong> ${{ total }}
+</div>
+
+{% else %}
+
+<!-- If cart is empty -->
+<div class="alert alert-warning">
+    Your cart is empty.
+</div>
+
+{% endif %}
+
+{% endblock %}
