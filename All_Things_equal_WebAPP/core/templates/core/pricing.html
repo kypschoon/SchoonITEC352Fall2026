@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <h2>Pricing Plans</h2>
+    <table>
+        <tr>
+            <th>Plan</th>
+            <th>Price</th>
+            <th>Description</th>
+        </tr>
+        {% for plan in plans %}
+        <tr>
+            <td>{{ plan.name }} {% if plan.is_popular %}★{% endif %}</td>
+            <td>${{ plan.price }}</td>
+            <td>{{ plan.description|linebreaks }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">No pricing plans available yet.</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

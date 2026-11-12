@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <div style="text-align:center; padding: 3rem 0;">
+        <h1 style="font-size: 3rem; color: #3d0c5a;">All Things Equal</h1>
+        <p style="font-size: 1.3rem;">Bookkeeping & Financial Advisory</p>
+        
+        <div style="margin-top: 2rem;">
+            <a class="btn" href="{% url 'about' %}">About / Contact</a>
+            <a class="btn" href="{% url 'pricing' %}">Pricing</a>
+            <a class="btn" href="{% url 'reviews' %}">Client Reviews</a>
+            <a class="btn" href="{% url 'quote' %}">Request a Quote</a>
+        </div>
+    </div>
+{% endblock %}

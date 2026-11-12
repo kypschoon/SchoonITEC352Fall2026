@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <h2>Client Reviews</h2>
+    <table>
+        <tr>
+            <th>Client</th>
+            <th>Company</th>
+            <th>Rating</th>
+            <th>Review</th>
+        </tr>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review.client_name }}</td>
+            <td>{{ review.company }}</td>
+            <td>{{ review.rating }} ★</td>
+            <td>{{ review.text }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No reviews yet.</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

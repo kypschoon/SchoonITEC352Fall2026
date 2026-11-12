@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <h2>Request a Quote</h2>
+    {% if success %}
+        <div class="success">Thank you! Your quote request has been sent. We’ll contact you soon.</div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Submit Request</button>
+    </form>
+{% endblock %}
