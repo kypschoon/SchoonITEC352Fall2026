@@ -1,22 +1,27 @@
 {% extends 'core/base.html' %}
+{% load static %}
 {% block content %}
-    <h2>Client Reviews</h2>
-    <table>
-        <tr>
-            <th>Client</th>
-            <th>Company</th>
-            <th>Rating</th>
-            <th>Review</th>
-        </tr>
-        {% for review in reviews %}
-        <tr>
-            <td>{{ review.client_name }}</td>
-            <td>{{ review.company }}</td>
-            <td>{{ review.rating }} ★</td>
-            <td>{{ review.text }}</td>
-        </tr>
-        {% empty %}
-        <tr><td colspan="4">No reviews yet.</td></tr>
-        {% endfor %}
-    </table>
+    <div style="background-image: url(&quot;{% static 'core/reviews.jpg' %}&quot;); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding: 3rem 4rem; box-sizing: border-box;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 style="background: rgba(255,255,255,0.92); padding: 1rem; border-radius: 8px; display: inline-block;">Client Reviews</h2>
+            <table style="background: rgba(255,255,255,0.92); width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                <tr>
+                    <th>Client</th>
+                    <th>Company</th>
+                    <th>Rating</th>
+                    <th>Review</th>
+                </tr>
+                {% for review in reviews %}
+                <tr>
+                    <td>{{ review.client_name }}</td>
+                    <td>{{ review.company }}</td>
+                    <td>{{ review.rating }} ★</td>
+                    <td>{{ review.text }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4">No reviews yet.</td></tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 {% endblock %}

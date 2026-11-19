@@ -1,9 +1,15 @@
 {% extends 'core/base.html' %}
+{% load static %}
 {% block content %}
     <h2>About All Things Equal</h2>
-    <p><strong>Destiny Schoon</strong><br>Owner & Lead Financial Specialist</p>
-    <p>Email: <a href="mailto:bookkeeping@allthingsequal.net">bookkeeping@allthingsequal.net</a></p>
-    <p>Phone: (970) 618-5653</p>
-    <p>175 Columbine Dr.<br>Parachute, CO 81635</p>
-    <p>We provide accurate, compliant, and insightful bookkeeping and financial advisory services to help businesses maintain balance and grow.</p>
+    <div style="display: flex; gap: 2rem; align-items: flex-start; margin-top: 1rem;">
+        <img src="{% static 'core/about.jpeg' %}" alt="About Destiny Schoon" style="width: 320px; border-radius: 12px; flex-shrink: 0;">
+        <div>
+            <p><strong>Destiny Schoon</strong><br>Owner & Lead Financial Specialist</p>
+            <p>Email: <a href="mailto:bookkeeping@allthingsequal.net">bookkeeping@allthingsequal.net</a></p>
+            <p>Phone: (970) 618-5653</p>
+            <p>175 Columbine Dr.<br>Parachute, CO 81635</p>
+            <p>We provide accurate, compliant, and insightful bookkeeping and financial advisory services to help businesses maintain balance and grow.</p>
+        </div>
+    </div>
 {% endblock %}

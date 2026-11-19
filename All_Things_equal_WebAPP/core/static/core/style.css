@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background: #fbf9fc;
+    background: #e8dff5;
     color: #1c1c1e;
 }
 
@@ -92,4 +92,35 @@ input, textarea, select {
 
 textarea {
     min-height: 120px;
+}
+
+/* Background images for Pricing and Reviews pages */
+.pricing-bg {
+    background-image: url("pricing.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 70vh;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.reviews-bg {
+    background-image: url("reviews.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 70vh;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+/* Make text readable on top of backgrounds */
+.pricing-bg h2,
+.reviews-bg h2,
+.pricing-bg table,
+.reviews-bg table {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 1rem;
+    border-radius: 8px;
 }

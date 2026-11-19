@@ -1,15 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>All Things Equal</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 <body>
     <header>
         <div>
-            <h1 style="margin:0;">All Things Equal</h1>
+            <img src="{% static 'core/logo.png' %}" alt="All Things Equal Logo" style="height: 60px; vertical-align: middle;">
+            <h1 style="margin:0; display:inline;">All Things Equal</h1>
             <nav style="margin-top: 0.5rem;">
                 <a href="{% url 'home' %}">Home</a>
                 <a href="{% url 'about' %}">About</a>
