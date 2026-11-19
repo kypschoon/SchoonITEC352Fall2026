@@ -44,6 +44,6 @@ NOTES
 - The database is SQLite.
 - Project structure:
   - config/     (settings and main urls)
-  - core/       (models, views, forms, admin, templates)
+  - core/       (models, views, forms, admin, templates, static)
   - manage.py
   - db.sqlite3
